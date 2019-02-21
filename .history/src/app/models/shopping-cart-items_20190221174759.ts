@@ -1,4 +1,4 @@
-import { Product } from './products';
+import { Product } from './product';
 
 export class ShoppingCartItem {
   $key: string;
