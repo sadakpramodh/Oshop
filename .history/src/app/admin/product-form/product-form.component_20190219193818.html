@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="save(f.value)">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input id="title" ngModel name="title" type="text" class="form-control" #title="ngModel" required>
+            <div *ngIf="title.touched && title.invalid" class="alert alert-danger">
+              Title is required.
+            </div>
+          </div>
+          <label for="price" class="form-group">Price</label>
+          <div class="input-group">
+            
+              
+              <div class="input-group-addon form-control">
+                <span class="input-group-text">$</span>
+                <input type="text" class="form-control" id="price" #price="ngModel" required ngModel name="price">
+                <span class="input-group-text">.00</span>
+              </div>
+            </div>
+          <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
+            Price is required.
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select ngModel name="category" id="category" class="form-control" #category="ngModel" required>
+              <option value=""></option>
+              <option *ngFor="let c of categories$ | async" [value]="c.$key">{{ c.name }}</option>
+            </select>
+            <div *ngIf="category.touched && category.invalid" class="alert alert-danger">
+              Category is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="imageUrl">Image Url</label>
+            <input ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" #imageUrl="ngModel" required>
+            <div *ngIf="imageUrl.touched && imageUrl.invalid" class="alert alert-danger">
+              Image url is required.
+            </div>
+          </div>
+          <button class="btn btn-primary">Save</button>
+        </form>
+  </div>
+  <div class="col-md-6">
+    <div class="card" style="width:20rem;">
+    <img src="" alt="" class="card-img-top" alt="card image cap">
+    <div class="card-body">
+    <h4 class="card-title"></h4>
+    <p class="card-text"></p>
+    <a href="" class="btn btn-primary"></a>
+  </div>
+  </div>
+  </div>
+</div>

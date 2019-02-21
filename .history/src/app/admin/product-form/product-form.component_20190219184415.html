@@ -1,0 +1,38 @@
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input id="title" ngModel name="title" type="text" class="form-control" #title="ngModel" required>
+    <div *ngIf="title.touched && title.invalid" class="alert alert-danger">
+      Title is required.
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="price">Price</label>
+    <div class="input-group-prepend">
+    <span class="input-group-addon">$</span>
+    <input #price="ngModel" ngModel name="price" id="price" type="number" class="input-group-addon" required>
+    <span class="input-group-addon">.00</span>
+  </div>
+  </div>
+  <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
+    Price is required.
+  </div>
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select ngModel name="category" id="category" class="form-control" #category="ngModel" required>
+      <option value=""></option>
+      <option *ngFor="let c of categories$ | async" [value]="c.$key">{{ c.name }}</option>
+    </select>
+    <div *ngIf="category.touched && category.invalid" class="alert alert-danger">
+      Category is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="imageUrl">Image Url</label>
+    <input ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" #imageUrl="ngModel" required>
+    <div *ngIf="imageUrl.touched && imageUrl.invalid" class="alert alert-danger">
+      Image url is required.
+    </div>
+  </div>
+  <button class="btn btn-primary">Save</button>
+</form>
